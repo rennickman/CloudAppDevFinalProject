@@ -1,10 +1,16 @@
-<h1>Editing writing</h1>
+<div class="container">
+    <!-- Heading -->
+    <h1>Editing writing</h1>
 
-<%= render "form", writing: @writing %>
+    <!-- Edit Writing Form -->
+    <%= render "form", writing: @writing %>
 
-<br>
+    <br>
 
-<div>
-  <%= link_to "Show this writing", @writing %> |
-  <%= link_to "Back to writings", writings_path %>
+    <div>
+        <!-- Show Writing Link -->
+        <%= link_to "Show this writing", @writing %> |
+        <!-- Back to all Writings Link -->
+        <%= link_to "Back to writings", writings_path %>
+    </div>
 </div>
