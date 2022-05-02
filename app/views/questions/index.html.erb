@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="container">
+    <!-- Heading  -->
+    <h1>Questions</h1>
+
+    <!-- Renders All Questions -->
+    <div id="questions">
+        <% @questions.each do |question| %>
+            <%= render question %>
+            <p>
+                <%= link_to "Show this question", question %>
+            </p>
+        <% end %>
+    </div>
+
+    <!-- Add new Question Link -->
+    <%= link_to "New question", new_question_path %>
+</div>
