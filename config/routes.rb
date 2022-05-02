@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :writings
   resources :questions
     # Routes
     get 'about', to: 'pages#about'
