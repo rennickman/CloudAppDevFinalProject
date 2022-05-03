@@ -2,9 +2,9 @@
 <% if current_user %>
 
     <li class="nav-item dropdown">
-        <!-- DropDown Toggle -->
+        <!-- User Name -->
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            User
+            <%= current_user.name %>
         </a>
 
         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
@@ -12,7 +12,9 @@
             <li><%= link_to "New Writing", new_writing_path, class: "dropdown-item" %></li>
             
             <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+
+            <!-- Edit Account Link -->
+            <li><%= link_to "Edit Account", edit_user_registration_path,  class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
 
             <!-- Sign Out Button -->

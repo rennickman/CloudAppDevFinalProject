@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
     # Devise Auth Routes
-    devise_for :users
+    devise_for :users, controllers: {
+        sessions: 'users/sessions',
+        registrations: 'users/registrations'
+    }
 
     # Routes for Writings
     resources :writings

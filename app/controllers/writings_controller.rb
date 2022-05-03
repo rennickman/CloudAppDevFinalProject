@@ -28,6 +28,8 @@ class WritingsController < ApplicationController
     # POST /writings or /writings.json
     def create
         @writing = Writing.new(writing_params)
+        # Save current user
+        @writing.user = current_user
 
         respond_to do |format|
             if @writing.save
