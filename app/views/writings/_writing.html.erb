@@ -4,7 +4,7 @@
     <h2><%= writing.title %></h2>
 
     <!-- Email of User -->
-    <h4>submitted by <%= writing.user.email %> </h4>
+    <h4>submitted by <%= link_to writing.user.name, user_path(writing.user) %> </h4>
     
     <!-- Writing Body -->
     <div>
