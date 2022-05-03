@@ -1,9 +1,12 @@
 class WritingsController < ApplicationController
     before_action :set_writing, only: %i[ show edit update destroy ]
+    # Make sure user is logged in before accessing writings controller, except show and index
+    before_action :authenticate_user!, except: %i[show index]
 
     # GET /writings or /writings.json
     def index
-        @writings = Writing.all
+        # Order writings by newest first
+        @writings = Writing.all.order(created_at: :desc)
     end
 
 
@@ -26,6 +29,8 @@ class WritingsController < ApplicationController
     # POST /writings or /writings.json
     def create
         @writing = Writing.new(writing_params)
+        # Save current user
+        @writing.user = current_user
 
         respond_to do |format|
             if @writing.save

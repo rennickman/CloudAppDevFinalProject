@@ -1,9 +1,13 @@
-<h1>New question</h1>
+<div class="container">
+    <!-- Heading -->
+    <h1>New question</h1>
 
-<%= render "form", question: @question %>
+    <!-- New Question Form -->
+    <%= render "form", question: @question %>
+    <br>
 
-<br>
-
-<div>
-  <%= link_to "Back to questions", questions_path %>
+    <!-- Back to all Questions Link -->
+    <div>
+        <%= link_to "Back to questions", questions_path %>
+    </div>
 </div>
