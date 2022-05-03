@@ -1,0 +1,35 @@
+<!-- Check if User is Logged In -->
+<% if current_user %>
+
+    <li class="nav-item dropdown">
+        <!-- DropDown Toggle -->
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            User
+        </a>
+
+        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+            <!-- New Writing Link -->
+            <li><%= link_to "New Writing", new_writing_path, class: "dropdown-item" %></li>
+            
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+
+            <!-- Sign Out Button -->
+            <li><%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+        </ul>
+    </li>
+
+<% else %>
+
+    <!-- Link to Register page -->
+    <li class="nav-item">
+        <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+    </li>
+
+    <!-- Link to Login page -->
+    <li class="nav-item">
+        <%= link_to "Login", new_user_session_path, class:"nav-link" %>
+    </li>
+
+<% end %>

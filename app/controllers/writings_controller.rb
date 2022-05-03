@@ -1,5 +1,7 @@
 class WritingsController < ApplicationController
     before_action :set_writing, only: %i[ show edit update destroy ]
+    # Make sure user is logged in before accessing writings controller, except show and index
+    before_action :authenticate_user!, except: %i[show index]
 
     # GET /writings or /writings.json
     def index
