@@ -15,3 +15,13 @@
         <%= button_to "Destroy this question", @question, method: :delete %>
     </div>
 </div>
+
+<div class="container">
+    <!-- Comment Form -->
+    <%= render 'comments/form', question: @question %>
+
+    <!-- Render Previous Comments -->
+    <% @comments.each do |comment| %>
+        <%= render 'comments/comment', question: @question, comment: comment %>
+    <% end %>
+</div>

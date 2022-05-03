@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     resources :writings
 
     # Routes for Questions
-    resources :questions
+    resources :questions do
+        resources :comments
+    end
 
     # About Page Route
     get 'about', to: 'pages#about'
