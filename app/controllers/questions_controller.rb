@@ -9,6 +9,8 @@ class QuestionsController < ApplicationController
 
     # GET /questions/1 or /questions/1.json
     def show
+        # Save the comments with newest first
+        @comments = @question.comments.order(created_at: :desc)
     end
 
 
