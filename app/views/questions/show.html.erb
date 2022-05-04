@@ -18,7 +18,7 @@
 
 <div class="container">
     <!-- Comment Form -->
-    <%= render 'comments/form', question: @question %>
+    <%= render 'comments/form', question: @question, comment: @question.comments.build, submit_label: "Reply" %>
 
     <!-- Render Previous Comments -->
     <% @comments.each do |comment| %>

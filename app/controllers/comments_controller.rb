@@ -32,6 +32,22 @@ class CommentsController < ApplicationController
     end
 
 
+    # Edit a comment
+    def update
+        # Find the comment using the id in params
+        @comment = @question.comments.find(params[:id])
+
+        # Update Comment using params and redirect back to Question page
+        respond_to do |format|
+            if @comment.update(comment_params)
+                format.html { redirect_to question_url(@question), notice: "Comment has been updated" }
+            else 
+                format.html { redirect_to question_url(@question), alert: "Comment was not updated" }
+            end
+        end
+    end
+
+
 
     private
 

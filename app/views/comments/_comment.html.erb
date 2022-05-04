@@ -2,17 +2,38 @@
     <!-- User Name -->
     <%= comment.user.name %><br />
 
-    <!-- Time when comment Posted -->
-    <span>Posted <%= time_ago_in_words(comment.created_at) %> </span>
+    <!-- Check if Comment has been editied -->
+    <% if (comment.updated_at - comment.created_at) > 1 %>
+        <!-- Time when comment last edited -->
+        <span>Edited <%= time_ago_in_words(comment.updated_at) %> ago</span>
+    <% else %>
+        <!-- Time when comment Posted -->
+        <span>Posted <%= time_ago_in_words(comment.created_at) %> ago</span>
+    <% end %>
 
-    <!-- Delete Button - Only shown to author of comment -->
+    <!-- Edit and Delete Buttons - Only shown to author of comment -->
     <% if current_user == comment.user %>
-        <div class="button-group float-end">
+        <div class="btn-group float-end">
+            <%= link_to "Edit", nil, remote: true, class: "btn btn-warning", 
+                data: { 
+                    controller: "comments", 
+                    action: "comments#toggleForm",
+                    comments_form_param: "edit-form-#{comment.id}",
+                    comments_body_param: "comment-body-#{comment.id}"
+                } %>
+
             <%= button_to "Delete", [question, comment], class:"btn btn-danger", method: :delete %>
+        </div>
+
+        <!-- Edit Form - Comment is passed down so it can be used as placeholder  -->
+        <div id="edit-form-<%= comment.id %>" class="d-none">
+            <%= render 'comments/form', question: @question, comment: comment, submit_label: "Update" %>
         </div>
     <% end %>
 
     <!-- Body of Comment -->
     <hr />
-    <%= comment.body %>
+    <div id="comment-body-<%= comment.id %>">
+        <%= comment.body %>
+    </div>
 </div>
