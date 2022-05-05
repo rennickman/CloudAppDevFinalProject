@@ -73,3 +73,4 @@ end
 
 # Adding devise for user authentification functionality
 gem 'devise'
+gem "noticed", "~> 1.5"
