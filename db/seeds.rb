@@ -8,6 +8,23 @@
 
 
 
+# Create admin account
+User.create(email: "renn@example.com", password: "password", password_confirmation: "password", name: "Ian", role: User.roles[:admin])
+
+# Create user account
+User.create(email: "billyBob@test.com", password: "password", password_confirmation: "password", name: "Bob")
+
+# Create 5 questions
 5.times do |x|
-    Question.create(title: "super interesting question #{x}", body: "What is the the answer to 1 x #{x}", answer: "Well Done, it's #{x}")
+    question = Question.create(title: "Question #{x}", body: "What is the bla bla?", answer: "Bla Bla Bla Bla", user_id: User.first.id)
+
+    # Create 5 comments for each question
+    5.times do |y|
+        Comment.create(body: "Comment #{y}", user_id: User.second.id, question_id: question.id)
+    end
+end
+
+# Create 5 writings
+5.times do |x|
+    writing = Writing.create(title: "Writing #{x}", body: "HEEEEEEYYYAAAAAA", user_id: User.second.id)
 end

@@ -9,6 +9,9 @@
 
         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
             <!-- New Writing Link -->
+            <li><%= link_to "Admin", admin_path, class: "dropdown-item" if current_user.admin? %></li>
+
+            <!-- New Writing Link -->
             <li><%= link_to "New Writing", new_writing_path, class: "dropdown-item" %></li>
             
             <li><a class="dropdown-item" href="#">Action</a></li>
