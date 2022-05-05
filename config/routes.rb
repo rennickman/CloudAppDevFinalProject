@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+    
     get 'users/profile'
         # Devise Auth Routes
         devise_for :users, controllers: {
@@ -13,6 +14,9 @@ Rails.application.routes.draw do
     resources :questions do
         resources :comments
     end
+
+    # Routes for Searchbar
+    get 'search', to: "search#index"
 
     # About Page Route
     get 'about', to: 'pages#about'

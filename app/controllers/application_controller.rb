@@ -1,10 +1,18 @@
 class ApplicationController < ActionController::Base
-
+    # Set notifications if User logged in
     before_action :set_notifications, if: :current_user
+    before_action :set_query
+
+
+    # Filter through Questions for Search Query
+    def set_query
+        @query = Question.ransack(params[:q])
+    end
 
 
 
     private
+
 
     # Set notifications for User - read and unread
     def set_notifications
