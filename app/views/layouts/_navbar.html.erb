@@ -32,9 +32,12 @@
                 </li>
             </ul>
 
-            <!-- Dropdown Menu -->
             <ul class="navbar-nav">
+                <!-- Searchbar -->
+                <%= render 'search/form' %>
+                <!-- Notifications -->
                 <%= render 'layouts/notifications' %>
+                <!-- User Dropdown -->
                 <%= render 'user/session_manager' %>
             </ul>
         </div>

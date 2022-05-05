@@ -1,0 +1,29 @@
+<!-- Heading -->
+<h1 class="text-center"><%= pluralize(@questions.count, "Result") %></h1>
+
+<!-- Results Table -->
+<div class="container">
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <!-- Title Heading -->
+                <th><%= sort_link(@query, :title, "Title", default_order: :asc) %></th>
+                <!-- Body Heading -->
+                <th><%= sort_link(@query, :body, "Question") %></th>
+                <!-- User Heading -->
+                <th><%= sort_link(@query, :user_name, "Users") %></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- Renders each question matching search query -->
+            <% @questions.each do |question| %>
+                <tr>
+                    <td><%= link_to question.title, question %></td>
+                    <td><%= question.body.truncate_words(25) %></td>
+                    <td><%= link_to question.user.name, question.user %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
