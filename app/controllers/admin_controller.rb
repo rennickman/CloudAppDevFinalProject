@@ -5,9 +5,13 @@ class AdminController < ApplicationController
     end
 
     def writings
+        # Set all the writings
+        @writings = Writing.all.includes(:user)
     end
 
     def questions
+        # Set all the questions with comments included
+        @questions = Question.all.includes(:user, :comments)
     end
 
     def comments
@@ -17,8 +21,12 @@ class AdminController < ApplicationController
     end
 
     def show_writing
+        # Set Writing using Id in params
+        @writing = Writing.includes(:user).find(params[:id])
     end
 
     def show_question
+        # Set question using Id in params
+        @question = Question.includes(:user, :comments).find(params[:id])
     end
 end
