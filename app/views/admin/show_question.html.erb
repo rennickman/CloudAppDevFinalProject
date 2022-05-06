@@ -1,0 +1,47 @@
+<div class="container">
+    <!-- Admin Links -->
+    <h1 class="text-center">Administrator</h1>
+    <%= render 'admin/nav_links' %>
+
+    <!-- Buttons for editing and deleting question -->
+    <div class="text-center mt-5">
+        <div class="btn-group">
+            <%= link_to "Edit", edit_question_path(@question), class: "btn btn-warning" %>
+            <%= button_to "Delete", @question, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        </div>
+    <div>
+
+    <!-- Title -->
+    <div class="row mt-1">
+        <p>
+            <strong>Title:</strong> <%= @question.title %>
+        </p>
+    </div>
+
+    <!-- Question -->
+    <div class="row mt-1">
+        <p>
+            <strong>Question:</strong> <%= @question.body %>
+        </p>
+    </div>
+
+    <!-- Answer -->
+    <div class="row mt-1">
+        <p>
+            <strong>Answer:</strong> <%= @question.answer %>
+        </p>
+    </div>
+
+    <div class="row mt-1">
+        <!-- Number of Comments -->
+        <strong><%= pluralize(@question.comments.count, "Comment") %></strong>
+
+        <!-- Render each comment -->
+        <% @question.comments.each do |comment| %>
+            <div class="row mt-1">
+                <%= comment.user.name %>
+                <%= comment.body %>
+            </div>
+        <% end %>
+    </div>
+</div>
