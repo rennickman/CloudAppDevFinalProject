@@ -73,6 +73,12 @@ end
 
 # Adding devise for user authentification functionality
 gem 'devise'
+
+# Adding noticed for notifications functionality
 gem "noticed", "~> 1.5"
 
+# Adding ransack for search functionality
 gem "ransack", "~> 3.1"
+
+# Adding Friendly Id to make urls look nicer
+gem "friendly_id", "~> 5.4"
