@@ -13,7 +13,7 @@ class Question < ApplicationRecord
     has_many :notifications, through: :user
 
     # Friendly ID to make url look nicer
-    friendly_id :title, use: %i[slugged]
+    friendly_id :title, use: %i[slugged history finders]
 
 
     # Generate a new friendly id when created or title changed

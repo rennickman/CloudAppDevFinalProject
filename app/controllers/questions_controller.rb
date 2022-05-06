@@ -77,7 +77,11 @@ class QuestionsController < ApplicationController
 
         # Use callbacks to share common setup or constraints between actions.
         def set_question
-            @question = Question.friendly.find(params[:id])
+            @question = Question.find(params[:id])
+
+            # Slug functionality to handle redirects if title changed
+            redirect_to @question, status: :moved_permanently if params[:id] != @question.slug
+            
         end
 
         # Only allow a list of trusted parameters through.
