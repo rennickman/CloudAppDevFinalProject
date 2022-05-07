@@ -29,6 +29,10 @@ Rails.application.routes.draw do
     end
 
 
+    # Routes for chatrooms
+    resources :rooms
+
+
     # Routes for Searchbar
     get 'search', to: "search#index"
 

@@ -1,0 +1,12 @@
+<div class="container">
+    <!-- Current Users name -->
+    <h5><%= current_user.name %></h5>
+
+    <!-- Render all other users -->
+    <h4>Users</h4>
+    <%= render @users %>
+
+    <!-- Render all public chatrooms -->
+    <h4>Rooms</h4>
+    <%= render @rooms %>
+</div>

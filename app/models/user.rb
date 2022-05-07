@@ -4,6 +4,9 @@ class User < ApplicationRecord
     devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
 
+    # Helper function so user cant direct message themselves
+    scope :all_except, ->(user) { where.not(id: user) }
+
     has_many :questions, dependent: :destroy
     has_many :writings, dependent: :destroy
     has_many :comments, dependent: :destroy
