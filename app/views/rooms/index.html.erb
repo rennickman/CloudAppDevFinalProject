@@ -1,12 +1,30 @@
-<div class="container">
-    <!-- Current Users name -->
-    <h5><%= current_user.name %></h5>
+<div id="chatroom_container" class="row bg-dark text-light">
+    <div id="side_panel" class="col-md-4 col-sm-4">
+        <!-- Current Users name -->
+        <h5><%= current_user.name %></h5>
 
-    <!-- Render all other users -->
-    <h4>Users</h4>
-    <%= render @users %>
+        <!-- Render all other users - using turbo stream for newly created users -->
+        <h4>Users</h4>
+        <%= turbo_stream_from 'users' %>
+        <div id="users">
+            <%= render @users %>
+        </div>
 
-    <!-- Render all public chatrooms -->
-    <h4>Rooms</h4>
-    <%= render @rooms %>
+        <!-- Render all public chatrooms - using turbo stream for newly created rooms -->
+        <h4>Rooms</h4>
+        <%= turbo_stream_from 'rooms' %>
+        <div id="rooms">
+            <%= render @rooms %>
+        </div>
+
+        <!-- New Room Form -->
+        <%= render 'layouts/new_room_form' %>
+    </div>
+
+    <div id="room_container" class="col-md-8 col-sm-8 bg-dark text-light">
+        <!-- Selected Chatroom - Second Column -->
+        <% if @single_room %>
+            <h4 class="text-center"><%= @single_room.name %></h4>
+        <% end %>
+    </div>
 </div>

@@ -6,10 +6,13 @@ class User < ApplicationRecord
 
     # Helper function so user cant direct message themselves
     scope :all_except, ->(user) { where.not(id: user) }
+    # Broadcast new User to list of Users in Chatroom
+    after_create_commit { broadcast_append_to 'users' }
 
     has_many :questions, dependent: :destroy
     has_many :writings, dependent: :destroy
     has_many :comments, dependent: :destroy
+    has_many :messages
 
     has_many :notifications, as: :recipient, dependent: :destroy
 
