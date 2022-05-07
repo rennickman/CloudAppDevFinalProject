@@ -13,11 +13,12 @@ Rails.application.routes.draw do
     
 
     get 'users/profile'
-        # Devise Auth Routes
-        devise_for :users, controllers: {
-            sessions: 'users/sessions',
-            registrations: 'users/registrations'
-        }
+    
+    # Devise Auth Routes
+    devise_for :users, controllers: {
+        sessions: 'users/sessions',
+        registrations: 'users/registrations'
+    }
 
 
     # Routes for Writings
