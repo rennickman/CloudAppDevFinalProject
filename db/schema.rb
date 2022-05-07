@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_07_131343) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_07_151827) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -91,6 +91,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_07_131343) do
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
 
+  create_table "participants", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_participants_on_room_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "title"
     t.string "body"
@@ -139,6 +148,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_07_131343) do
   add_foreign_key "comments", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "participants", "rooms"
+  add_foreign_key "participants", "users"
   add_foreign_key "questions", "users"
   add_foreign_key "writings", "users"
 end
