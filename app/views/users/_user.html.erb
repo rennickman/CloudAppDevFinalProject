@@ -1,3 +1,17 @@
-<div>
-    <%= link_to user.name, user %>
-</div>
+<!-- Set isActive depending on whether user is participant in chatroom -->
+<% if @single_room && @single_room.participant?(@single_room, user) %>
+    <% isActive = 'active' %>
+<% else %>
+    <% isActive = '' %>
+<% end %>
+
+
+<li class="list-group-item d-flex align-items-center justify-content-between user_list_item <%= isActive %>">
+    <!-- User Avatar -->
+    <div>
+        <%= link_to image_tag(user.chat_avatar, class: "chat_pfp"), user %>
+    </div>  
+
+    <!-- Username -->
+    <%= link_to user.name, user, class: "ms-2 me-auto username", data: { turbo: "false" } %>
+</li>
