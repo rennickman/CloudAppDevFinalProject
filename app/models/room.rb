@@ -29,4 +29,10 @@ class Room < ApplicationRecord
         single_room
     end
 
+
+    # Method to check if a user if a participant of a room
+    def participant?(room, user)
+        room.participants.where(user: user).exists?
+    end
+
 end
