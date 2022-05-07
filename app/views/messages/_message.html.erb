@@ -1,0 +1,9 @@
+<div>
+    <!-- Username of sender -->
+    <% unless message.room.is_private %>
+        <h6 class="name"><%= message.user.name %></h6>
+    <% end %>
+
+    <!-- Message Content -->
+    <%= message.body %>
+</div>

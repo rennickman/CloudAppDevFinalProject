@@ -30,7 +30,9 @@ Rails.application.routes.draw do
 
 
     # Routes for chatrooms
-    resources :rooms
+    resources :rooms do
+        resources :messages
+    end
 
 
     # Routes for Searchbar
