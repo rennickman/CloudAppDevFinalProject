@@ -30,7 +30,7 @@
                 <!-- User name or Chatroom Name -->
                 <h4 class="text-center"><%= @user&.name || @single_room.name %></h4>
 
-                <!-- Render all messafe - using turbo stream for newly created messages -->
+                <!-- Render all messages - using turbo stream for newly created messages -->
                 <%= turbo_stream_from @single_room %>
                 <div id="messages">
                     <%= render @messages %>

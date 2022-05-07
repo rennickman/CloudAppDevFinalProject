@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     get 'about', to: 'pages#about'
 
     # User Profile Route
-    get '/u/:id', to: 'users#profile', as: 'user'
+    get '/u/:id', to: 'users#show', as: 'user'
 
       
     # Defines the root path route ("/")
