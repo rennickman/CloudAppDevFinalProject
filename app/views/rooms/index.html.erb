@@ -1,8 +1,29 @@
+<!-- Event Listenter Helper -->
+<%= turbo_frame_tag 'appearance_channel' %>
+<div id="appearance_channel"></div>
+
 <!-- side Panel - first Column -->
 <div id="chatroom_container" class="row bg-dark text-light">
     <div id="side_panel" class="col-md-4 col-sm-4">
-        <!-- Current Users name -->
-        <h5><%= current_user.name %></h5>
+        <li class="list-group-item d-flex align-items-center justify-content-between user_list_item">
+            <div class="icon-container">
+                <!-- User Avatar -->
+                <%= link_to image_tag(current_user.chat_avatar, class: "chat_pfp"), current_user %>
+
+                <!-- User Online Status -->
+                <%= turbo_stream_from 'user_status' %>
+                <div>
+                    <%= render 'users/status', user: current_user %>
+                </div>
+            </div>
+
+            <!-- Username -->
+            <div class= "ms-2 me-auto username">
+                <%= current_user.name %>
+            </div>
+        </li>
+
+        
 
         <!-- Render all other users - using turbo stream for newly created users -->
         <h4>Users</h4>
