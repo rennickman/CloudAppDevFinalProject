@@ -94,6 +94,7 @@ body {
 .user_list_item {
     height: 55px;
     background-color: #343a40 !important;
+    color: #fff;
 }
 
 .room_list_item {
@@ -113,4 +114,21 @@ body {
     margin-top: 0px;
     padding-bottom: 0px;
     margin-bottom: 0px;
+}
+
+.icon-container {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.status-circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: grey;
+    border: 2px solid white;
+    bottom: 10px;
+    right: 10px;
+    position: absolute;
 }

@@ -1,8 +1,8 @@
 class RoomsController < ApplicationController
     # Make sure user is logged in
     before_action :authenticate_user!
-
-
+    # Set user status
+    before_action :set_status
 
     def index
         @room = Room.new
@@ -40,5 +40,16 @@ class RoomsController < ApplicationController
     def create
         # create a new room using params
         @room = Room.create(name: params["room"]["name"])
+    end
+
+
+
+
+    private
+
+
+    # Set User as online when they visit rooms pages
+    def set_status
+        current_user.update!(status: User.statuses[:online]) if current_user
     end
 end
