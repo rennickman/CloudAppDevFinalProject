@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     # Set notifications for User - read and unread
     def set_notifications
         # Grab the latest Notifications limited to 9
-        notifications = Notification.where(recipient: current_user).newest_first.limit(9)
+        notifications = Notification.includes(:recipient).where(recipient: current_user).newest_first.limit(9)
         # Set unread notifications
         @unread = notifications.unread
         # Set read notifications
