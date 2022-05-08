@@ -11,7 +11,7 @@ class AdminController < ApplicationController
 
     def questions
         # Set all the questions with comments included
-        @questions = Question.all.includes(:user, :comments)
+        @questions = Question.all.includes(:user)
     end
 
     def comments
@@ -27,6 +27,6 @@ class AdminController < ApplicationController
 
     def show_question
         # Set question using Id in params
-        @question = Question.includes(:user, :comments).find(params[:id])
+        @question = Question.includes(:user).find(params[:id])
     end
 end

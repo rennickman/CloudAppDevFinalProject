@@ -83,3 +83,5 @@ gem "ransack", "~> 3.1"
 
 # Adding Friendly Id to make urls look nicer
 gem "friendly_id", "~> 5.4"
+
+gem "bullet", "~> 7.0"

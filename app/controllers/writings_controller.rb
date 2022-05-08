@@ -6,7 +6,7 @@ class WritingsController < ApplicationController
     # GET /writings or /writings.json
     def index
         # Order writings by newest first
-        @writings = Writing.all.order(created_at: :desc)
+        @writings = Writing.includes(:user).all.order(created_at: :desc)
     end
 
 
